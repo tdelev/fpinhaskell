@@ -1,0 +1,12 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.prezi.haskell:gradle-haskell-plugin:0.5'
+    }
+}
+projects {
+    apply plugin: 'haskell'
+}
