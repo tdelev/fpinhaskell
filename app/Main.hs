@@ -29,9 +29,9 @@ formatAbs x = format "%d absolute is %d" x Main.abs
 
 find :: [a] -> (a -> Bool) -> Int
 find [] _ = 0
-find (head:cons) pred 
-    | pred head = 1 + find cons pred
-    | otherwise = find cons pred
+find (head:tail) predicate
+    | predicate head = 1 + find tail predicate
+    | otherwise = find tail predicate
     -- then 1 + find xs pred
     -- else find xs pred
 
@@ -39,6 +39,6 @@ find (head:cons) pred
 isSorted :: [a] -> (a -> a -> Bool) -> Bool
 isSorted [] _ = True
 isSorted [head] _ = True
-isSorted (first:(second:cons)) pred
-    | pred first second = isSorted (second:cons) pred
+isSorted (first:(second:tail)) predicate
+    | predicate first second = isSorted (second:tail) predicate
     | otherwise = False
